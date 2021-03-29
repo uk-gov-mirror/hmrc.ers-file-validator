@@ -145,7 +145,7 @@ class ProcessCsvService @Inject()(auditEvents: AuditEvents,
         sendSchemeCsv(SchemeData(schemeInfo, csvFileContents.sheetName, None, csvFileContents.contents.to[ListBuffer]), empRef).map { issues =>
           issues.fold(
             throwable => Left(throwable),
-            noOfSlices => Right(noOfSlices, csvFileContents.contents.size)
+            noOfSlices => Right((noOfSlices, csvFileContents.contents.size))
           )
         }
       }
@@ -162,15 +162,14 @@ class ProcessCsvService @Inject()(auditEvents: AuditEvents,
           .map { issues =>
             issues.fold(
               throwable => Left(throwable),
-              noOfSlices => Right(noOfSlices, csvFileSubmissions.fileLength)
+              noOfSlices => Right((noOfSlices, csvFileSubmissions.fileLength))
             )
           }
       }
     )
   }
 
-  def formatDataToValidate(rowData: Seq[String], sheetInfo: SheetInfo)(
-    implicit hc: HeaderCarrier, request: Request[_]): Seq[String] = {
+  def formatDataToValidate(rowData: Seq[String], sheetInfo: SheetInfo): Seq[String] = {
     rowData.take(sheetInfo.headerRow.length)
   }
 

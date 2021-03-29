@@ -33,8 +33,7 @@ import uk.gov.hmrc.services.validation.models.ValidationError
 import utils.ErrorResponseMessages
 
 import scala.collection.mutable.ListBuffer
-import scala.concurrent.{Await, ExecutionContext, Future}
-import scala.concurrent.duration.Duration
+import scala.concurrent.ExecutionContext
 import scala.util.{Failure, Success, Try}
 
 @Singleton

@@ -21,9 +21,6 @@ import uk.gov.hmrc.services.validation.models._
 import models.ValidationErrorData
 import org.scalatestplus.play.PlaySpec
 
-/**
- * Created by matt on 25/01/16.
- */
 trait ValidationTestRunner extends PlaySpec{
 
 

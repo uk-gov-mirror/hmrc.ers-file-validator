@@ -47,8 +47,7 @@ class MockProcessCsvService(auditEvents: AuditEvents,
                              implicit ec: ExecutionContext, ac: ActorSystem
                            ) extends ProcessCsvService(auditEvents, dataGenerator, appConfig, ersConnector) {
 
-  override def formatDataToValidate(rowData: Seq[String], sheetInfo: SheetInfo)(
-    implicit hc: HeaderCarrier, request: Request[_]): Seq[String] = formatDataToValidate match {
+  override def formatDataToValidate(rowData: Seq[String], sheetInfo: SheetInfo): Seq[String] = formatDataToValidate match {
     case None => super.formatDataToValidate(rowData, sheetInfo)
     case Some(returner) => returner
   }

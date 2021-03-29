@@ -16,13 +16,10 @@
 
 package services.validation.SIPTestData
 
-import uk.gov.hmrc.services.validation.DataValidator
 import uk.gov.hmrc.services.validation.models._
 import models.ValidationErrorData
 
-/**
- * Created by matt on 13/04/16.
- */
+
 trait ERSValidationSIPAwardsTestData {
   val rowNumber:Int = 1
 

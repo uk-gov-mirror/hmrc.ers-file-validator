@@ -16,7 +16,7 @@
 
 package services.validation.CSOPTestData
 
-import uk.gov.hmrc.services.validation.DataValidator
+
 import uk.gov.hmrc.services.validation.models._
 import models.ValidationErrorData
 

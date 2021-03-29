@@ -16,7 +16,6 @@
 
 package services.validation.SIPTestData
 
-import uk.gov.hmrc.services.validation.DataValidator
 import uk.gov.hmrc.services.validation.models._
 import models.ValidationErrorData
 

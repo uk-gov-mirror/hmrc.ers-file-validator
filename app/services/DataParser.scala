@@ -21,7 +21,7 @@ import models._
 import play.api.Logger
 import utils.ErrorResponseMessages
 
-import scala.util.{Failure, Success, Try}
+import scala.util.Try
 import scala.xml._
 
 trait DataParser {
@@ -52,7 +52,7 @@ trait DataParser {
         }
 
         cols match {
-          case Right(r: Seq[String]) if !isBlankRow(r) => Right(r, repeated(xmlRow))
+          case Right(r: Seq[String]) if !isBlankRow(r) => Right((r, repeated(xmlRow)))
           case Right(s: Seq[String]) => Right((s, 1))
         }
       case _ => {

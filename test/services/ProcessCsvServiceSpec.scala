@@ -19,9 +19,7 @@ package services
 import akka.NotUsed
 import akka.actor.ActorSystem
 import akka.http.scaladsl.model.{HttpResponse, StatusCodes}
-import akka.stream.IOResult
-import akka.stream.alpakka.csv.scaladsl.CsvParsing
-import akka.stream.scaladsl.{FileIO, Sink, Source}
+import akka.stream.scaladsl.{Sink, Source}
 import akka.testkit.TestKit
 import akka.util.ByteString
 import com.typesafe.config.{Config, ConfigFactory}
@@ -39,13 +37,12 @@ import org.scalatestplus.mockito.MockitoSugar
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import play.api.mvc.Request
 import services.audit.AuditEvents
-import uk.gov.hmrc.http.{HeaderCarrier, UpstreamErrorResponse}
+import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.play.test.UnitSpec
 import uk.gov.hmrc.services.validation.DataValidator
 import uk.gov.hmrc.services.validation.models.{Cell, Row, ValidationError}
 import utils.ErrorResponseMessages
 
-import java.io.File
 import scala.collection.mutable.ListBuffer
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
@@ -191,6 +188,7 @@ class ProcessCsvServiceSpec extends TestKit(ActorSystem("Test")) with UnitSpec w
       val boolList = Await.result(Future.sequence(resultFuture), Duration.Inf)
       boolList.head match {
         case Left(ex) => ex.getMessage mustBe "ers.exceptions.dataParser.configFailure"
+        case Right(_) => fail("Expected result to be a Left")
       }
       assert(boolList.forall(_.isLeft))
     }
@@ -259,6 +257,7 @@ class ProcessCsvServiceSpec extends TestKit(ActorSystem("Test")) with UnitSpec w
       val boolList = Await.result(Future.sequence(resultFuture), Duration.Inf)
       boolList.head match {
         case Left(ex) => ex.getMessage mustBe "ers.exceptions.dataParser.configFailure"
+        case Right(_) => fail("Expected result to be a Left")
       }
       assert(boolList.forall(_.isLeft))
     }
@@ -358,7 +357,7 @@ class ProcessCsvServiceSpec extends TestKit(ActorSystem("Test")) with UnitSpec w
       )
 
       assert(result.isRight)
-      result.right.get mustBe(458, 1)
+      result.right.get mustBe((458, 1))
 
     }
   }
@@ -397,7 +396,7 @@ class ProcessCsvServiceSpec extends TestKit(ActorSystem("Test")) with UnitSpec w
       )
 
       assert(result.isRight)
-      result.right.get mustBe(458, 1)
+      result.right.get mustBe((458, 1))
 
     }
   }

@@ -16,7 +16,7 @@
 
 package services
 
-import java.io.{ByteArrayInputStream, FileInputStream, FileOutputStream}
+import java.io.{FileInputStream, FileOutputStream}
 import java.nio.file.Files
 import java.util.zip.{ZipEntry, ZipOutputStream}
 
@@ -33,7 +33,6 @@ import org.scalatestplus.mockito.MockitoSugar
 import org.scalatestplus.play.PlaySpec
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import play.api.mvc.Request
-import play.api.test.Helpers._
 import services.audit.AuditEvents
 import uk.gov.hmrc.http.{HeaderCarrier, HttpResponse}
 

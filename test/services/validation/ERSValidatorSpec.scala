@@ -35,7 +35,6 @@ package services.validation
 
 import com.typesafe.config.ConfigFactory
 import uk.gov.hmrc.services.validation.DataValidator
-import uk.gov.hmrc.services.validation.models._
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatestplus.mockito.MockitoSugar
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite

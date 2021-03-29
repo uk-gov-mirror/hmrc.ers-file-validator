@@ -18,7 +18,6 @@ package connectors
 
 import java.io.InputStream
 import java.net.URL
-import java.util.NoSuchElementException
 import java.util.concurrent.TimeUnit
 
 import config.ApplicationConfig

@@ -29,13 +29,8 @@ import play.api.mvc.Request
 import services.XMLTestData._
 import services.audit.AuditEvents
 import uk.gov.hmrc.http.HeaderCarrier
-import uk.gov.hmrc.services.validation.DataValidator
-import uk.gov.hmrc.services.validation.models._
 
-import scala.collection.mutable.ListBuffer
-import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutor, Future}
-import scala.concurrent.duration.Duration
-import scala.util.Success
+import scala.concurrent.{ExecutionContext, ExecutionContextExecutor}
 import java.io.FileNotFoundException
 
 import scala.xml._
